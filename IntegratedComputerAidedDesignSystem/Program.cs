@@ -14,7 +14,7 @@ namespace IntegratedComputerAidedDesignSystem
                 text = await reader.ReadToEndAsync();
             }
             
-            var parser = new CalayParser(); 
+            var parser = new CalayParser(text); 
             parser.Parse(text);
         }
     }
