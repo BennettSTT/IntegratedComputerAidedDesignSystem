@@ -12,13 +12,21 @@ namespace IntegratedComputerAidedDesignSystem
         Calay
     }
 
-    public class Microcircuit
+    /// <summary>
+    /// E - компонент
+    /// </summary>
+    public class Component
     {
         public string Name { get; set; }
 
         public List<Output> Outputs { get; } = new List<Output>();
+
+        public bool Find(Node node) => Outputs.Any(output => output.Node.Name == node.Name);
     }
 
+    /// <summary>
+    /// C - Вывод из компонента
+    /// </summary>
     public class Output
     {
         public string Name { get; set; }
@@ -26,17 +34,20 @@ namespace IntegratedComputerAidedDesignSystem
         public Node Node { get; set; }
     }
 
+    /// <summary>
+    /// V - узел
+    /// </summary>
     public class Node
     {
         public string Name { get; set; }
     }
     
-    
     public class CalayParser
     {
-        public Microcircuit[] Parse(string text)
+        public (Component[] components, Node[] nodes) Parse(string text)
         {
-            Dictionary<string, Microcircuit> microcircuitCache = new Dictionary<string, Microcircuit>();
+            Dictionary<string, Component> components = new Dictionary<string, Component>();
+            Dictionary<string, Node> nodes = new Dictionary<string, Node>();
 
             string[] rows = text.Replace(Environment.NewLine, string.Empty).Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -50,6 +61,9 @@ namespace IntegratedComputerAidedDesignSystem
                 }
 
                 var node = new Node { Name = elements[0] };
+                
+                nodes.Add(node.Name, node);
+
                 for (int i = 1; i < elements.Length; i++)
                 {
                     string element = elements[i];
@@ -61,23 +75,22 @@ namespace IntegratedComputerAidedDesignSystem
                         throw new Exception();
                     }
 
-                    Microcircuit microcircuit;
-                    var microcircuitName = res[0];
-                    if (!microcircuitCache.TryGetValue(microcircuitName, out microcircuit))
+                    var componentName = res[0];
+                    if (!components.TryGetValue(componentName, out var component))
                     {
-                        microcircuit = new Microcircuit { Name = microcircuitName };
-                        microcircuitCache.Add(microcircuitName, microcircuit);
+                        component = new Component { Name = componentName };
+                        components.Add(component.Name, component);
                     }
 
                     string outputName = res[1];
 
                     var output = new Output { Name = outputName, Node = node };
 
-                    microcircuit.Outputs.Add(output);
+                    component.Outputs.Add(output);
                 }
             }
 
-            return microcircuitCache.Values.ToArray();
+            return (components.Values.ToArray(), nodes.Values.ToArray());
         }
     }
 }
