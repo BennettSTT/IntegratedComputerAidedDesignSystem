@@ -16,16 +16,9 @@ namespace IntegratedComputerAidedDesignSystem
             
             var parser = new CalayParser(); 
             (Component[] components, Node[] nodes) = parser.Parse(text);
-            
-            int[,] Q = new int[components.Length, nodes.Length];
 
-            for (int i = 0; i < components.Length; i++)
-            {
-                for (var j = 0; j < nodes.Length; j++)
-                {
-                    Q[i, j] = components[i].Find(nodes[j]) ? 1 : 0;
-                }
-            }
+            int[,] qMatrix = Matrix.GetQMatrix(components, nodes);
+
         }
     }
 }
