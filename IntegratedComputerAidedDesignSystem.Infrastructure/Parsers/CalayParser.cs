@@ -1,17 +1,19 @@
-﻿using System;
+﻿using IntegratedComputerAidedDesignSystem.Infrastructure.Parsers.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace IntegratedComputerAidedDesignSystem.Infrastructure
+namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
 {
-    public class CalayParser
+    internal class CalayParser : IFormatParser
     {
         public (Component[] components, Node[] nodes) Parse(string text)
         {
             var components = new Dictionary<string, Component>();
             var nodes = new Dictionary<string, Node>();
 
-            var rows = text.Replace(Environment.NewLine, string.Empty).Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            var rows = text.Replace(Environment.NewLine, string.Empty)
+                .Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var row in rows)
             {
@@ -22,14 +24,15 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
                 }
 
                 var node = new Node { Name = rowEntries[0] };
-                
+
                 nodes.Add(node.Name, node);
 
                 for (var i = 1; i < rowEntries.Length; i++)
                 {
                     var rowEntry = rowEntries[i];
 
-                    var rowEntryEntries = rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                    var rowEntryEntries =
+                        rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
                     if (rowEntryEntries.Length != 2)
                     {
                         throw new Exception();

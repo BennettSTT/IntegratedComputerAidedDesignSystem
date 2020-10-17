@@ -14,6 +14,10 @@
     <AdditionalFiles Include="shema1_cl90.net">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>
+    <None Remove="allegro_1.NET" />
+    <AdditionalFiles Include="allegro_1.NET">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
 
 </Project>
