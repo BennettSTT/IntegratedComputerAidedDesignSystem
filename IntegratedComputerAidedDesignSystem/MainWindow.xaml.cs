@@ -116,10 +116,8 @@ namespace IntegratedComputerAidedDesignSystem
 
         private static async Task<string> ReadFileAsync(string filePath)
         {
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                return await reader.ReadToEndAsync();
-            }
+            using StreamReader reader = new StreamReader(filePath);
+            return await reader.ReadToEndAsync();
         }
 
         private void RenderQMatrix(object sender, RoutedEventArgs e) => RenderMatrix(MatrixType.Q);

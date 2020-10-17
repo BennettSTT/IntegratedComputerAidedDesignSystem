@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesignSystem.NETCoreConsole", "IntegratedComputerAidedDesignSystem.NETCoreConsole\IntegratedComputerAidedDesignSystem.NETCoreConsole.csproj", "{0EA47F18-39BB-44B2-97A1-C6B55417D066}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesignSystem", "IntegratedComputerAidedDesignSystem\IntegratedComputerAidedDesignSystem.csproj", "{8E41887B-DE87-46D2-B5E2-0D4A752F2A4F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesignSystem", "IntegratedComputerAidedDesignSystem\IntegratedComputerAidedDesignSystem.csproj", "{FD0B3B3A-0547-4211-A18F-C0D796C08B43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E41887B-DE87-46D2-B5E2-0D4A752F2A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E41887B-DE87-46D2-B5E2-0D4A752F2A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E41887B-DE87-46D2-B5E2-0D4A752F2A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E41887B-DE87-46D2-B5E2-0D4A752F2A4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
