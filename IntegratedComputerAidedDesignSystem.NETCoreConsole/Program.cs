@@ -1,5 +1,4 @@
 ﻿using IntegratedComputerAidedDesignSystem.Infrastructure;
-using IntegratedComputerAidedDesignSystem.Infrastructure.Parsers;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -16,10 +15,10 @@ namespace IntegratedComputerAidedDesignSystem.NETCoreConsole
                 text = await reader.ReadToEndAsync();
             }
 
-            var parser = new Parser(text);
-            var (components, nodes) = parser.Parse();
+            var manager = new MatrixManager(text);
 
-            var (qMatrix, rMatrix) = Matrix.GetQAndRMatrix(components, nodes);
+            var q = manager.GetMatrixInfo(MatrixType.Q);
+            var r = manager.GetMatrixInfo(MatrixType.R);
         }
     }
 }

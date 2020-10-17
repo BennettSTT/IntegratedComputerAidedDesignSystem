@@ -1,0 +1,90 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace IntegratedComputerAidedDesignSystem.Infrastructure
+{
+    public enum MatrixType
+    {
+        Q = 1,
+        R
+    }
+
+    internal class MatrixCalculator
+    {
+        private readonly Component[] _components;
+        private readonly Node[] _nodes;
+
+        public MatrixCalculator(Component[] components, Node[] nodes)
+        {
+            _components = components;
+            _nodes = nodes;
+        }
+
+        public int[,] GetMatrix(MatrixType matrixType) => matrixType switch
+        {
+            MatrixType.Q => GetQMatrix(),
+            MatrixType.R => GetRMatrix(GetQMatrix()),
+
+            _ => throw new ArgumentException(nameof(matrixType))
+        };
+
+        private int[,] GetQMatrix()
+        {
+            var qMatrix = new int[_components.Length, _nodes.Length];
+
+            for (var i = 0; i < _components.Length; i++)
+            {
+                for (var j = 0; j < _nodes.Length; j++)
+                {
+                    qMatrix[i, j] = _components[i].GetCount(_nodes[j]);
+                }
+            }
+
+            return qMatrix;
+        }
+
+        private static int[,] GetRMatrix(int[,] qMatrix)
+        {
+            var transposeQMatrix = Transpose(qMatrix);
+
+            var lineCount = qMatrix.GetLength(1);
+            var columnCount = qMatrix.GetLength(0);
+            var rMatrix = new int[columnCount, columnCount];
+
+            for (var i = 0; i < columnCount; i++)
+            {
+                for (var j = 0; j < columnCount; j++)
+                {
+                    var temp = 0;
+
+                    for (var k = 0; k < lineCount; k++)
+                    {
+                        temp += qMatrix[i, k] * transposeQMatrix[k, j];
+                    }
+
+                    rMatrix[i, j] = temp;
+                }
+            }
+
+            return rMatrix;
+        }
+
+        private static int[,] Transpose(int[,] matrix)
+        {
+            var w = matrix.GetLength(0);
+            var h = matrix.GetLength(1);
+
+            var transposeMatrix = new int[h, w];
+
+            for (var i = 0; i < w; i++)
+            {
+                for (var j = 0; j < h; j++)
+                {
+                    transposeMatrix[j, i] = matrix[i, j];
+                }
+            }
+
+            return transposeMatrix;
+        }
+    }
+}

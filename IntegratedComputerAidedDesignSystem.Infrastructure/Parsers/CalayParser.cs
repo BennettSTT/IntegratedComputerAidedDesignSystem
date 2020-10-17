@@ -31,8 +31,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                 {
                     var rowEntry = rowEntries[i];
 
-                    var rowEntryEntries =
-                        rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                    var rowEntryEntries = rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
                     if (rowEntryEntries.Length != 2)
                     {
                         throw new Exception();

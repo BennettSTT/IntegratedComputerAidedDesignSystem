@@ -23,7 +23,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                 var rowEntries = row.Split(new[] { ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 if (rowEntries.Length <= 1)
                 {
-                    throw new Exception();
+                    continue;
                 }
 
                 var node = new Node { Name = rowEntries[0] };
@@ -34,8 +34,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                 {
                     var rowEntry = rowEntries[i];
 
-                    var rowEntryEntries =
-                        rowEntry.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    var rowEntryEntries = rowEntry.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     if (rowEntryEntries.Length != 2)
                     {
                         throw new Exception();
