@@ -1,14 +1,24 @@
-﻿namespace IntegratedComputerAidedDesignSystem.Infrastructure
+﻿using System.Collections.Generic;
+
+namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
     public static class Matrix
     {
-        public static int[,] GetQMatrix(Component[] components, Node[] nodes)
+        public static (int[,] qMatrix, int[,] rMatrix) GetQAndRMatrix(Component[] components, Node[] nodes)
         {
-            var qMatrix = new int[components.Length, nodes.Length];
+            var qMatrix = GetQMatrix(components, nodes);
+            var rMatrix = GetRMatrix(qMatrix);
 
-            for (var i = 0; i < components.Length; i++)
+            return (qMatrix, rMatrix);
+        }
+
+        private static int[,] GetQMatrix(IReadOnlyList<Component> components, IReadOnlyList<Node> nodes)
+        {
+            var qMatrix = new int[components.Count, nodes.Count];
+
+            for (var i = 0; i < components.Count; i++)
             {
-                for (var j = 0; j < nodes.Length; j++)
+                for (var j = 0; j < nodes.Count; j++)
                 {
                     qMatrix[i, j] = components[i].Find(nodes[j]) ? 1 : 0;
                 }
@@ -17,13 +27,27 @@
             return qMatrix;
         }
 
-        public static int[,] GetRMatrix(int[,] qMatrix)
+        private static int[,] GetRMatrix(int[,] qMatrix)
         {
             var transposeQMatrix = Transpose(qMatrix);
 
-            // Тут нужно умножить Q и Q'
+            var length = qMatrix.GetLength(1);
+            var rMatrix = new int[length, length];
 
-            var rMatrix = new int[qMatrix.GetLength(0), qMatrix.GetLength(0)];
+            for (var i = 0; i < length; i++)
+            {
+                for (var j = 0; j < length; j++)
+                {
+                    var temp = 0;
+
+                    for (var k = 0; k < length; k++)
+                    {
+                        temp += qMatrix[i, k] * transposeQMatrix[k, j];
+                    }
+
+                    rMatrix[i, j] = temp;
+                }
+            }
 
             return rMatrix;
         }

@@ -18,7 +18,8 @@ namespace IntegratedComputerAidedDesignSystem.NETCoreConsole
             var parser = new CalayParser();
             var (components, nodes) = parser.Parse(text);
 
-            var qMatrix = Matrix.GetQMatrix(components, nodes);
+            var (qMatrix, rMatrix) = Matrix.GetQAndRMatrix(components, nodes);
+            
         }
     }
 }
