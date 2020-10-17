@@ -1,10 +1,9 @@
 ﻿namespace IntegratedComputerAidedDesignSystem
 {
     /// <summary>
-    /// V - узел
+    /// Interaction logic for App.xaml
     /// </summary>
-    public class Node
+    public partial class App
     {
-        public string Name { get; set; }
     }
 }

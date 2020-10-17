@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace IntegratedComputerAidedDesignSystem
+namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
     /// <summary>
     /// E - компонент

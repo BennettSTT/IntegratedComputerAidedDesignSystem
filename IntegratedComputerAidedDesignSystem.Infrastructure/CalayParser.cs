@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace IntegratedComputerAidedDesignSystem
+namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
     public class CalayParser
     {
         public (Component[] components, Node[] nodes) Parse(string text)
         {
-            Dictionary<string, Component> components = new Dictionary<string, Component>();
-            Dictionary<string, Node> nodes = new Dictionary<string, Node>();
+            var components = new Dictionary<string, Component>();
+            var nodes = new Dictionary<string, Node>();
 
-            string[] rows = text.Replace(Environment.NewLine, string.Empty).Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            var rows = text.Replace(Environment.NewLine, string.Empty).Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (string row in rows)
+            foreach (var row in rows)
             {
-                string[] rowEntries = row.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var rowEntries = row.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 if (rowEntries.Length <= 1)
                 {
                     throw new Exception();
@@ -25,9 +25,9 @@ namespace IntegratedComputerAidedDesignSystem
                 
                 nodes.Add(node.Name, node);
 
-                for (int i = 1; i < rowEntries.Length; i++)
+                for (var i = 1; i < rowEntries.Length; i++)
                 {
-                    string rowEntry = rowEntries[i];
+                    var rowEntry = rowEntries[i];
 
                     var rowEntryEntries = rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
                     if (rowEntryEntries.Length != 2)
@@ -42,7 +42,7 @@ namespace IntegratedComputerAidedDesignSystem
                         components.Add(component.Name, component);
                     }
 
-                    string outputName = rowEntryEntries[1];
+                    var outputName = rowEntryEntries[1];
                     var output = new Output { Name = outputName, Node = node };
 
                     component.Outputs.Add(output);

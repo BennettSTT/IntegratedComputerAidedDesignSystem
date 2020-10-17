@@ -1,4 +1,4 @@
-﻿namespace IntegratedComputerAidedDesignSystem
+﻿namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
     /// <summary>
     /// C - Вывод из компонента
