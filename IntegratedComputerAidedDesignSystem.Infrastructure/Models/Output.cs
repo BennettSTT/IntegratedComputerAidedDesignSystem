@@ -1,4 +1,4 @@
-﻿namespace IntegratedComputerAidedDesignSystem.Infrastructure
+﻿namespace IntegratedComputerAidedDesignSystem.Infrastructure.Models
 {
     /// <summary>
     /// C - Вывод из компонента

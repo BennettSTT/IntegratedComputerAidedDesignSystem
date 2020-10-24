@@ -129,7 +129,7 @@ namespace IntegratedComputerAidedDesignSystem
             var matrixInfo = manager.GetMatrixInfo(matrixType);
 
             RenderGrid(Grid, matrixInfo);
-            MatrixNameLabel.Content = matrixType.ToString();
+            MatrixNameLabel.Content = matrixType.ToString() + " = ";
         }
     }
 }

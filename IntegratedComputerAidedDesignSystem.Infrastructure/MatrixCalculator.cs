@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using IntegratedComputerAidedDesignSystem.Infrastructure.Models;
+using System;
 
 namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
@@ -36,7 +36,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
             {
                 for (var j = 0; j < _nodes.Length; j++)
                 {
-                    qMatrix[i, j] = _components[i].GetCount(_nodes[j]);
+                    qMatrix[i, j] = _components[i].Find(_nodes[j]) ? 1 : 0;
                 }
             }
 
@@ -55,6 +55,12 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
             {
                 for (var j = 0; j < columnCount; j++)
                 {
+                    if (i == j)
+                    {
+                        rMatrix[i, j] = 0;
+                        continue;
+                    }
+                    
                     var temp = 0;
 
                     for (var k = 0; k < lineCount; k++)

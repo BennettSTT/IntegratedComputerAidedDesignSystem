@@ -1,4 +1,6 @@
-﻿namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers.Interfaces
+﻿using IntegratedComputerAidedDesignSystem.Infrastructure.Models;
+
+namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers.Interfaces
 {
     internal interface IFormatParser
     {

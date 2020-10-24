@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IntegratedComputerAidedDesignSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1400">
+        Title="Обозреватель ГКС" Height="700" Width="1400">
     <Grid>
         <Button Content="Загрузить файл *.NET" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click" Height="26"/>
         <Grid x:Name="Grid" HorizontalAlignment="Left"  Margin="50,51,0,0" VerticalAlignment="Top"/>
         <Label Content="" Name="MatrixNameLabel" HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Button Content="Q" HorizontalAlignment="Left" Margin="161,11,0,0" VerticalAlignment="Top" Width="75" Click="RenderQMatrix" Height="23"/>
-        <Button Content="R" HorizontalAlignment="Left" Margin="251,13,0,0" VerticalAlignment="Top" Width="75" Click="RenderRMatrix" Height="21"/>
+        <Button Content="Вычислить матрицу Q" HorizontalAlignment="Left" Margin="161,11,0,0" VerticalAlignment="Top" Width="150" Click="RenderQMatrix" Height="23"/>
+        <Button Content="Вычислить матрицу R" HorizontalAlignment="Left" Margin="321,11,0,0" VerticalAlignment="Top" Width="150" Click="RenderRMatrix" Height="23"/>
     </Grid>
 </Window>

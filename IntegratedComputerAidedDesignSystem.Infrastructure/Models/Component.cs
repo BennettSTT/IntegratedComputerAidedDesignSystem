@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace IntegratedComputerAidedDesignSystem.Infrastructure
+namespace IntegratedComputerAidedDesignSystem.Infrastructure.Models
 {
     /// <summary>
     /// E - компонент
@@ -12,6 +12,6 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
 
         public List<Output> Outputs { get; } = new List<Output>();
 
-        public int GetCount(Node node) => Outputs.Count(output => output.Node.Name == node.Name);
+        public bool Find(Node node) => Outputs.Any(output => output.Node.Name == node.Name);
     }
 }
