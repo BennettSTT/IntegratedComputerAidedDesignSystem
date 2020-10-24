@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesignSystem.Infrastructure", "IntegratedComputerAidedDesignSystem.Infrastructure\IntegratedComputerAidedDesignSystem.Infrastructure.csproj", "{DB4C6FBD-735F-4FDB-AA42-C7A1BC093742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesignSystem.NETCoreConsole", "IntegratedComputerAidedDesignSystem.NETCoreConsole\IntegratedComputerAidedDesignSystem.NETCoreConsole.csproj", "{0EA47F18-39BB-44B2-97A1-C6B55417D066}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegratedComputerAidedDesignSystem", "IntegratedComputerAidedDesignSystem\IntegratedComputerAidedDesignSystem.csproj", "{FD0B3B3A-0547-4211-A18F-C0D796C08B43}"
 EndProject
 Global
@@ -16,10 +14,6 @@ Global
 		{DB4C6FBD-735F-4FDB-AA42-C7A1BC093742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB4C6FBD-735F-4FDB-AA42-C7A1BC093742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB4C6FBD-735F-4FDB-AA42-C7A1BC093742}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EA47F18-39BB-44B2-97A1-C6B55417D066}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD0B3B3A-0547-4211-A18F-C0D796C08B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
