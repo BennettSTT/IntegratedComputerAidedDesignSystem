@@ -1,25 +1,10 @@
-﻿using IntegratedComputerAidedDesignSystem.Infrastructure.Parsers;
+﻿using IntegratedComputerAidedDesignSystem.Infrastructure.Models;
+using IntegratedComputerAidedDesignSystem.Infrastructure.Parsers;
 using System;
 using System.Linq;
 
 namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
-    public class MatrixInfo
-    {
-        public MatrixInfo(string[] rows, string[] columns, int[,] matrix)
-        {
-            Rows = rows;
-            Columns = columns;
-            Matrix = matrix;
-        }
-        
-        public string[] Rows { get; }
-        
-        public string[] Columns { get; }
-        
-        public int[,] Matrix { get; }
-    }
-    
     public class MatrixManager
     {
         private readonly string _text;

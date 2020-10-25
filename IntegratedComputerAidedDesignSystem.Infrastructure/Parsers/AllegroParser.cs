@@ -27,7 +27,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                     continue;
                 }
 
-                var node = new Node { Name = rowEntries[0] };
+                var node = new Node(rowEntries[0]);
 
                 nodes.Add(node.Name, node);
 
@@ -44,12 +44,12 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                     var componentName = rowEntryEntries[0];
                     if (!components.TryGetValue(componentName, out var component))
                     {
-                        component = new Component { Name = componentName };
+                        component = new Component(componentName);
                         components.Add(component.Name, component);
                     }
 
                     var outputName = rowEntryEntries[1];
-                    var output = new Output { Name = outputName, Node = node };
+                    var output = new Output(outputName, node);
 
                     component.Outputs.Add(output);
                 }

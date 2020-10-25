@@ -13,7 +13,8 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
             var components = new Dictionary<string, Component>();
             var nodes = new Dictionary<string, Node>();
 
-            var rows = text.Replace(Environment.NewLine, string.Empty)
+            var rows = text
+                .Replace(Environment.NewLine, string.Empty)
                 .Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var row in rows)
@@ -24,7 +25,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                     throw new Exception();
                 }
 
-                var node = new Node { Name = rowEntries[0] };
+                var node = new Node(rowEntries[0]);
 
                 nodes.Add(node.Name, node);
 
@@ -32,7 +33,8 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                 {
                     var rowEntry = rowEntries[i];
 
-                    var rowEntryEntries = rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                    var rowEntryEntries =
+                        rowEntry.Split(new[] { '(', '\'', ')' }, StringSplitOptions.RemoveEmptyEntries);
                     if (rowEntryEntries.Length != 2)
                     {
                         throw new Exception();
@@ -41,12 +43,12 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Parsers
                     var componentName = rowEntryEntries[0];
                     if (!components.TryGetValue(componentName, out var component))
                     {
-                        component = new Component { Name = componentName };
+                        component = new Component(componentName);
                         components.Add(component.Name, component);
                     }
 
                     var outputName = rowEntryEntries[1];
-                    var output = new Output { Name = outputName, Node = node };
+                    var output = new Output(outputName, node);
 
                     component.Outputs.Add(output);
                 }

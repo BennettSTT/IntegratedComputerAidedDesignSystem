@@ -3,12 +3,6 @@ using System;
 
 namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
-    public enum MatrixType
-    {
-        Q = 1,
-        R
-    }
-
     internal class MatrixCalculator
     {
         private readonly Component[] _components;
@@ -60,7 +54,7 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
                         rMatrix[i, j] = 0;
                         continue;
                     }
-                    
+
                     var temp = 0;
 
                     for (var k = 0; k < lineCount; k++)

@@ -1,4 +1,5 @@
 ﻿using IntegratedComputerAidedDesignSystem.Infrastructure;
+using IntegratedComputerAidedDesignSystem.Infrastructure.Models;
 using Microsoft.Win32;
 using System.IO;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace IntegratedComputerAidedDesignSystem
     /// </summary>
     public partial class MainWindow
     {
-        private string _text;
+        private string? _text;
 
         public MainWindow()
         {
@@ -125,11 +126,14 @@ namespace IntegratedComputerAidedDesignSystem
 
         private void RenderMatrix(MatrixType matrixType)
         {
+            if (_text == null) return;
+
             var manager = new MatrixManager(_text);
             var matrixInfo = manager.GetMatrixInfo(matrixType);
 
             RenderGrid(Grid, matrixInfo);
-            MatrixNameLabel.Content = matrixType.ToString() + " = ";
+
+            MatrixNameLabel.Content = matrixType + " = ";
         }
     }
 }

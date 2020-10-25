@@ -5,8 +5,14 @@
     /// </summary>
     public class Output
     {
-        public string Name { get; set; }
+        public Output(string name, Node node)
+        {
+            Name = name;
+            Node = node;
+        }
 
-        public Node Node { get; set; }
+        public string Name { get; }
+
+        public Node Node { get; }
     }
 }

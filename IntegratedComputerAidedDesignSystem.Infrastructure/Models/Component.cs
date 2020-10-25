@@ -8,9 +8,16 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure.Models
     /// </summary>
     public class Component
     {
-        public string Name { get; set; }
+        public Component(string name)
+        {
+            Name = name;
 
-        public List<Output> Outputs { get; } = new List<Output>();
+            Outputs = new List<Output>();
+        }
+
+        public string Name { get; }
+
+        public List<Output> Outputs { get; }
 
         public bool Find(Node node) => Outputs.Any(output => output.Node.Name == node.Name);
     }
