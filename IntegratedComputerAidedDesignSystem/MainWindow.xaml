@@ -8,9 +8,14 @@
         Title="Обозреватель ГКС" Height="700" Width="1400">
     <Grid>
         <Button Content="Загрузить файл *.NET" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="133" Click="Button_Click" Height="26"/>
-        <Grid x:Name="Grid" HorizontalAlignment="Left"  Margin="50,51,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="Grid" HorizontalAlignment="Left"  Margin="50,150,0,0" VerticalAlignment="Top"/>
         <Label Content="" Name="MatrixNameLabel" HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Button Content="Вычислить матрицу Q" HorizontalAlignment="Left" Margin="161,11,0,0" VerticalAlignment="Top" Width="150" Click="RenderQMatrix" Height="23"/>
-        <Button Content="Вычислить матрицу R" HorizontalAlignment="Left" Margin="321,11,0,0" VerticalAlignment="Top" Width="150" Click="RenderRMatrix" Height="23"/>
+        <Button Content="Вычислить Q" HorizontalAlignment="Left" Margin="161,11,0,0" VerticalAlignment="Top" Width="100" Click="RenderQMatrix" Height="23"/>
+        <Button Content="Вычислить R" HorizontalAlignment="Left" Margin="279,11,0,0" VerticalAlignment="Top" Width="100" Click="RenderRMatrix" Height="23"/>
+        <Button Content="Нарисовать связи" HorizontalAlignment="Left" Margin="401,11,0,0" VerticalAlignment="Top" Width="111" Height="23" Click="RenderGraph"/>
+        <CheckBox Height="20" Width="80" Content="Param4" IsChecked="True" Margin="316,56,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <CheckBox Height="20" Width="80" Content="Param4" Margin="215,56,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <CheckBox Height="20" Width="80" Content="Param2" Margin="113,56,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <CheckBox Height="20" Width="80" Content="Param1" Margin="15,56,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
     </Grid>
 </Window>

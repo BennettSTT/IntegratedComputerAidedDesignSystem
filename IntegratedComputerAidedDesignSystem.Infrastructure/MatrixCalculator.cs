@@ -14,13 +14,16 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
             _nodes = nodes;
         }
 
-        public int[,] GetMatrix(MatrixType matrixType) => matrixType switch
+        public int[,] GetMatrix(MatrixType matrixType)
         {
-            MatrixType.Q => GetQMatrix(),
-            MatrixType.R => GetRMatrix(GetQMatrix()),
+            return matrixType switch
+            {
+                MatrixType.Q => GetQMatrix(),
+                MatrixType.R => GetRMatrix(GetQMatrix()),
 
-            _ => throw new ArgumentException(nameof(matrixType))
-        };
+                _ => throw new ArgumentException(nameof(matrixType))
+            };
+        }
 
         private int[,] GetQMatrix()
         {

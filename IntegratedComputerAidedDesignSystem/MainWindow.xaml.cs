@@ -1,11 +1,14 @@
 ﻿using IntegratedComputerAidedDesignSystem.Infrastructure;
 using IntegratedComputerAidedDesignSystem.Infrastructure.Models;
+using Microsoft.Msagl.Drawing;
+using Microsoft.Msagl.GraphViewerGdi;
 using Microsoft.Win32;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace IntegratedComputerAidedDesignSystem
 {
@@ -31,7 +34,6 @@ namespace IntegratedComputerAidedDesignSystem
             if (openFileDialog.ShowDialog() != true) return;
 
             _text = await ReadFileAsync(openFileDialog.FileName);
-
         }
 
         private static void RenderGrid(Grid grid, MatrixInfo matrixInfo)
@@ -123,6 +125,14 @@ namespace IntegratedComputerAidedDesignSystem
 
         private void RenderQMatrix(object sender, RoutedEventArgs e) => RenderMatrix(MatrixType.Q);
         private void RenderRMatrix(object sender, RoutedEventArgs e) => RenderMatrix(MatrixType.R);
+
+        private void RenderGraph(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(_text)) return;
+
+            AlgGraph algGraph = new AlgGraph(_text);
+            algGraph.Show();
+        }
 
         private void RenderMatrix(MatrixType matrixType)
         {

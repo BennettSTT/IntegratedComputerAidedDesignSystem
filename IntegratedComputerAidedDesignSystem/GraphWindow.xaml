@@ -1,0 +1,15 @@
+﻿<Window x:Class="IntegratedComputerAidedDesignSystem.AlgGraph"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:IntegratedComputerAidedDesignSystem"
+        xmlns:graphViewerGdi="clr-namespace:Microsoft.Msagl.GraphViewerGdi;assembly=Microsoft.Msagl.GraphViewerGdi"
+        mc:Ignorable="d"
+        Title="AlgGraph" Height="450" Width="800">
+    <Grid>
+        <WindowsFormsHost Name="windowsFormsHost1" Margin="0,34,0,0">
+            <graphViewerGdi:GViewer x:Name="gViewer"></graphViewerGdi:GViewer>
+        </WindowsFormsHost>
+    </Grid>
+</Window>
