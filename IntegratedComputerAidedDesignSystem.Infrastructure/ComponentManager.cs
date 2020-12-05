@@ -5,10 +5,12 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
     public class ComponentManager
     {
-        public (Component[] components, Node[] nodes) GetComponents(string text)
+        public Component[] GetComponents(string text)
         {
             var parser = new Parser(text);
-            return parser.Parse();
+            var (components, _) = parser.Parse();
+
+            return components;
         }
     }
 }

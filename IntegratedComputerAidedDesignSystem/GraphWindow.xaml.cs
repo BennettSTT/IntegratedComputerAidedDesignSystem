@@ -15,10 +15,17 @@ namespace IntegratedComputerAidedDesignSystem
             InitializeComponent();
 
             Graph graph = new Graph("graph");
-            
+
             var componentManager = new ComponentManager();
-            var (components, nodes) = componentManager.GetComponents(text);
-            
+            var components = componentManager.GetComponents(text);
+
+            RenderGraph(graph, components);
+
+            gViewer.Graph = graph;
+        }
+
+        private static void RenderGraph(Graph graph, Component[] components)
+        {
             foreach (var component in components)
             {
                 foreach (var output in component.Outputs)
@@ -41,8 +48,6 @@ namespace IntegratedComputerAidedDesignSystem
                 componentNode.Attr.Padding = 100;
                 componentNode.Attr.Shape = Shape.Circle;
             }
-
-            gViewer.Graph = graph;
         }
     }
 }
