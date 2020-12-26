@@ -7,8 +7,8 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
 {
     internal class MatrixCalculator
     {
-        private readonly Component[] _components;
-        private readonly Node[] _nodes;
+        private  Component[] _components;
+        private  Node[] _nodes;
 
         public MatrixCalculator(Component[] components, Node[] nodes)
         {
@@ -18,11 +18,23 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
 
         public int[,] GetMatrix(MatrixType matrixType)
         {
+            _components = new[]
+            {
+                new Component("1"),
+                new Component("2"),
+                new Component("3"),
+                new Component("4"),
+                new Component("5"),
+                new Component("6"),
+                new Component("7"),
+                new Component("8"),
+            };
+            
+            var localComponents = _components;
+            
             const int batchCount = 2;
             const int vertexCount = 4;
             
-            //var rMatrix = GetRMatrix(GetQMatrix());
-
             int[,] rMatrix = 
             {
                 /* 1 */ { 0, 1, 0, 0, 2, 3, 0, 0 }, // 6
@@ -35,32 +47,45 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
                 /* 8 */ { 0, 0, 0, 1, 0, 1, 2, 0 }  // 4
             };
             
-            var (minDegree, minDegreeIndex, allDegree) = GetMinDegree(rMatrix);
             for (var xIndex = 0; xIndex < batchCount; xIndex++)
             {
+                var (minDegree, minDegreeIndex, allDegree) = GetMinDegree(rMatrix);
+                
                 var batch = GetBatch(rMatrix, allDegree, minDegreeIndex, vertexCount);
+                var batchComponents = new Component[batch.Length];
 
-                /*
-                var currentX = minDegreeIndex;
-                var xArray = new List<int> { minDegreeIndex };
-                var k = minDegree;
-
-                for (var i = 1; i < vertexCount; i++)
+                var batchIndex = 0;
+                foreach (var element in batch)
                 {
-                    var adjacentVertices = GetAdjacentVertices(rMatrix, xArray, currentX);
-
-                    var (vertex, maxDeltaValue) = GetMaxDelta(rMatrix, allDegree, adjacentVertices, xArray);
-
-                    currentX = vertex;
-
-                    if (!xArray.Contains(currentX))
-                    {
-                        xArray.Add(currentX);
-                    }
-                  
-                    k -= maxDeltaValue;
+                    batchComponents[batchIndex] = _components[element];
+                    batchIndex++;
                 }
-            */
+
+                _components = _components.Where(x => batchComponents.All(b => b.Name != x.Name)).ToArray();
+                
+                
+                var temp = new int[rMatrix.GetLength(0)];
+                for (var index = 0; index < temp.Length; index++)
+                {
+                    temp[index] = index;
+                }
+
+                var elements = temp.Where(x => !batch.Contains(x)).ToArray();
+                var elementsLength = elements.Length;
+
+                var newRMatrix = new int[elementsLength, elementsLength];
+                var i = 0;
+                foreach (var elementI in elements)
+                {
+                    var j = 0;
+                    foreach (var elementJ in elements)
+                    {
+                        newRMatrix[i, j] = rMatrix[elementI, elementJ];
+                        j++;
+                    }
+                    i++;
+                }
+                rMatrix = newRMatrix;
             }
 
             return matrixType switch
@@ -75,10 +100,8 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
         private static int[] GetBatch(int[,] rMatrix, int[] allDegree, int firstVertex, int vertexCount)
         {
             var currentVertex = firstVertex;
-            var vertices = new List<int> { vertexCount };
+            var vertices = new List<int> { firstVertex };
             
-            //var k = minDegree;
-
             for (var indexVertex = 1; indexVertex < vertexCount; indexVertex++)
             {
                 var adjacentVertices = GetAdjacentVertices(rMatrix, vertices, currentVertex);
@@ -91,8 +114,6 @@ namespace IntegratedComputerAidedDesignSystem.Infrastructure
                 {
                     vertices.Add(currentVertex);
                 }
-                  
-                //k -= maxDeltaValue;
             }
 
             return vertices.ToArray();
