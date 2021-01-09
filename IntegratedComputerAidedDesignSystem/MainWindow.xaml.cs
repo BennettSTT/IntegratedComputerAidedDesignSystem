@@ -129,8 +129,10 @@ namespace IntegratedComputerAidedDesignSystem
         private void RenderGraph(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(_text)) return;
+            if (BatchCount == null || !int.TryParse(BatchCount.Text, out var batchCount)) return;
+            if (VertexCount == null || !int.TryParse(VertexCount.Text, out var vertexCount)) return;
 
-            AlgGraph algGraph = new AlgGraph(_text);
+            AlgGraph algGraph = new AlgGraph(_text, batchCount, vertexCount);
             algGraph.Show();
         }
 

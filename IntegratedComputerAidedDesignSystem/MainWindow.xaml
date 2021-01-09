@@ -13,9 +13,9 @@
         <Button Content="Вычислить Q" HorizontalAlignment="Left" Margin="161,11,0,0" VerticalAlignment="Top" Width="100" Click="RenderQMatrix" Height="23"/>
         <Button Content="Вычислить R" HorizontalAlignment="Left" Margin="279,11,0,0" VerticalAlignment="Top" Width="100" Click="RenderRMatrix" Height="23"/>
         <Button Content="Нарисовать связи" HorizontalAlignment="Left" Margin="401,11,0,0" VerticalAlignment="Top" Width="111" Height="23" Click="RenderGraph"/>
-        <CheckBox Height="20" Width="80" Content="Param4" IsChecked="True" Margin="316,56,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-        <CheckBox Height="20" Width="80" Content="Param4" Margin="215,56,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-        <CheckBox Height="20" Width="80" Content="Param2" Margin="113,56,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-        <CheckBox Height="20" Width="80" Content="Param1" Margin="15,56,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <TextBox Name="BatchCount" Height="26" Width="65" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="10,44,0,0"/>
+        <Label Content="Количество кусков графа" HorizontalAlignment="Left" Margin="75,44,0,0" VerticalAlignment="Top" Height="31" Width="158"/>
+        <TextBox Name="VertexCount" Height="26" Width="64" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="12,80,0,0"  />
+        <Label Content="Количество вершин в курсе графа" HorizontalAlignment="Left" Margin="76,80,0,0" VerticalAlignment="Top" Height="26" Width="210"/>
     </Grid>
 </Window>

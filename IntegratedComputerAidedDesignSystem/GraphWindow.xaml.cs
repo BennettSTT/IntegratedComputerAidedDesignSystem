@@ -11,7 +11,7 @@ namespace IntegratedComputerAidedDesignSystem
 {
     public partial class AlgGraph : Window
     {
-        public AlgGraph(string text)
+        public AlgGraph(string text, int batchCount, int vertexCount)
         {
             InitializeComponent();
 
@@ -24,7 +24,7 @@ namespace IntegratedComputerAidedDesignSystem
 
             var matrix = calculator.GetMatrix(MatrixType.R);
 
-            var result = Algorithm.Run(components, matrix, 5, 5);
+            var result = Algorithm.Run(components, matrix, batchCount, vertexCount);
 
             RenderGraph(graph, result);
 
@@ -34,9 +34,9 @@ namespace IntegratedComputerAidedDesignSystem
         private static void RenderGraph(Graph graph, List<Component[]> list)
         {
             graph.LayoutAlgorithmSettings = new FastIncrementalLayoutSettings();
-            Color[] colors = 
-            { 
-                Color.YellowGreen, 
+            Color[] colors =
+            {
+                Color.YellowGreen,
                 Color.LightBlue,
                 Color.Aqua,
                 Color.SeaShell,
@@ -52,20 +52,20 @@ namespace IntegratedComputerAidedDesignSystem
             foreach (Component[] components in list)
             {
                 Color color = colors[index];
-                
+
                 foreach (var component in components)
                 {
                     foreach (var output in component.Outputs)
                     {
                         var fullNameOutput = $"{component.Name}:{output.Name}";
                         var nodeName = output.Node.Name;
-                    
+
                         graph.AddEdge(component.Name, fullNameOutput);
                         graph.AddEdge(fullNameOutput, nodeName);
 
                         var nodeNode = graph.FindNode(nodeName);
-                        nodeNode.Attr.FillColor =color;
-                    
+                        nodeNode.Attr.FillColor = color;
+
                         var outputNode = graph.FindNode(fullNameOutput);
                         outputNode.Attr.FillColor = color;
                     }
@@ -77,6 +77,6 @@ namespace IntegratedComputerAidedDesignSystem
 
                 index++;
             }
-         }
+        }
     }
 }
